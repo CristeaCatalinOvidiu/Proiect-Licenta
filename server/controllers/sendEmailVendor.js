@@ -1,0 +1,72 @@
+import nodemailer from 'nodemailer'
+import {google} from 'googleapis'
+import dotenv from "dotenv"
+
+dotenv.config()
+
+
+const {OAuth2}  = google.auth
+const OAUTH_PLAYGROUND = 'https://developers.google.com/oauthplayground'
+
+const {
+    MAILING_SERVICE_CLIENT_ID,
+    MAILING_SERVICE_CLIENT_SECRET,
+    MAILING_SERVICE_REFRESH_TOKEN,
+    SENDER_EMAIL_ADDRESS
+} = process.env
+
+const oauth2Client = new OAuth2(
+    MAILING_SERVICE_CLIENT_ID,
+    MAILING_SERVICE_CLIENT_SECRET,
+    OAUTH_PLAYGROUND
+)
+
+// send mail
+const sendEmailVendor = async (to, url, txt) => {
+    oauth2Client.setCredentials({
+        refresh_token: MAILING_SERVICE_REFRESH_TOKEN
+    })
+
+    google.options({ auth: oauth2Client })
+
+    const accessToken = oauth2Client.getAccessToken()
+    
+    const smtpTransport = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            type: 'OAuth2',
+            user: SENDER_EMAIL_ADDRESS,
+            clientId: MAILING_SERVICE_CLIENT_ID,
+            clientSecret: MAILING_SERVICE_CLIENT_SECRET,
+            refreshToken: MAILING_SERVICE_REFRESH_TOKEN,
+            accessToken
+        }
+    })
+
+    const mailOptions = {
+        from: SENDER_EMAIL_ADDRESS,
+        to: to,
+        subject: "Welcome From Save Ukraine Site",
+        html: `
+            <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
+            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to Save Ukraine Site</h2>
+            <p>Hello Vendor !</p> <br>
+            <p>A little more and you will be able to  sell products at a good price that will be intended for refugees from Ukraine.
+             Activate the link below
+            </p>
+            <a href=${url} style="background: crimson; text-decoration: none; color: white; padding: 10px 20px; margin: 10px 0; display: inline-block;">${txt}</a>
+
+
+
+            <p>Created by Save Ukraine  PWEB-IDP Team © 2022</p>
+        
+        
+            <div>${url}</div>
+            </div>
+        `
+    }
+    
+
+    return await smtpTransport.sendMail(mailOptions)
+}
+export default sendEmailVendor

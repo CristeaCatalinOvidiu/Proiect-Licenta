@@ -1,0 +1,863 @@
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  max-width: 1200px;
+  width: 100%;
+  min-height: 100vh;
+  box-shadow: 0 0 20px whitesmoke;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.alert {
+  margin-bottom: 2rem;
+  height: 2rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  letter-spacing: var(--spacing);
+  
+}
+
+.alert2 {
+  margin-top: 0rem;
+  height: 6rem;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 0.25rem;
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+}
+
+.return {
+  height: 10rem;
+  text-align: center;
+  margin-top: 20rem;
+  font-size: 3rem;
+}
+
+.alert-danger {
+  color: #721c24;
+  background: #f8d7da;
+}
+
+.alert-success {
+  color: #155724;
+  background: #d4edda;
+}
+
+.categories {
+  max-width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 30px auto;
+}
+.categories form {
+  width: 290px;
+  margin-bottom: 20px;
+}
+.categories label {
+  display: block;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.categories input,
+button {
+  height: 35px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #555;
+}
+.categories input {
+  width: 210px;
+}
+.categories button {
+  width: 70px;
+  background: #555;
+  color: white;
+  margin-left: 10px;
+}
+.categories .row {
+  min-width: 290px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+load-page {
+  background: #fff;
+  overflow: hidden;
+}
+.loader {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
+.loader div {
+  width: calc(100% - 15px);
+  height: calc(100% - 15px);
+  border: 2px solid #fff;
+  border-top: 2px solid crimson;
+  border-radius: 50%;
+  animation: rotate 10s linear infinite alternate-reverse;
+}
+@keyframes rotate {
+  50% {
+    transform: rotate(80deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@import url("./components/header/header.css");
+@import url("./components/body/auth/auth.css");
+@import url("./components/body/profile/profile.css");
+
+/* create item */
+
+.create_product {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.upload {
+  max-width: 450px;
+  height: 500px;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px;
+  position: relative;
+}
+#file_up {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+#file_up::before {
+  content: "+";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  color: rgb(250, 200, 107);
+  font-size: 17rem;
+  text-align: center;
+  cursor: pointer;
+  margin: auto;
+}
+#file_img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+}
+#file_img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+#file_img span {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 900;
+  color: crimson;
+}
+
+.create_product form {
+  max-width: 500px;
+  min-width: 290px;
+  width: 100%;
+  margin: 15px 30px;
+}
+.create_product form .row {
+  width: 100%;
+  margin: 15px 0;
+}
+.create_product form input,
+textarea {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 5px;
+}
+.create_product form button {
+  width: 200px;
+  height: 40px;
+  background: #555;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/*itemcss*/
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  margin: 20px 0;
+}
+
+.delete-all {
+  text-align: right;
+  margin: 20px;
+}
+.delete-all input {
+  height: 25px;
+  width: 25px;
+  transform: translateY(5px);
+  margin: 0 15px;
+}
+.delete-all span {
+  text-transform: uppercase;
+  color: rgb(3, 165, 206);
+  letter-spacing: 1.3px;
+}
+.delete-all button {
+  border: 1px solid crimson;
+  padding: 10px 25px;
+  color: crimson;
+  text-transform: uppercase;
+}
+
+/* ------------ Filters Menu ----------------- */
+.filter_menu {
+  width: 100%;
+  min-height: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+.filter_menu select,
+input {
+  border: 1px solid #ccc;
+  outline: none;
+  height: 40px;
+  padding: 0 5px;
+}
+.filter_menu input {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* -------------------- Load More --------------- */
+.load_more {
+  text-align: center;
+}
+.load_more button {
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  border: 1px solid #555;
+  text-transform: capitalize;
+}
+
+.product_card {
+  max-width: 300px;
+  overflow: hidden;
+  height: 500px;
+  padding: 15px;
+  box-shadow: 0 0 15px #ddd;
+  margin: 10px 0;
+  position: relative;
+}
+.product_card img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+}
+.product_box h2 {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: capitalize;
+  cursor: pointer;
+  color: #323232;
+}
+.product_card span {
+  color: crimson;
+}
+.product_box p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  height: 70px;
+  overflow: hidden;
+  color: #323232;
+}
+.row_btn {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.row_btn a {
+  width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 6px;
+}
+#btn_buy {
+  background: #555;
+  margin-right: 5px;
+  
+}
+
+#btn_view {
+  background: teal;
+  margin-left: 5px;
+  
+}
+#btn_view2 {
+  background: red;
+  margin-left: 5px;
+ 
+}
+.product_card input {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+ 
+}
+
+/*item css*/
+
+.products {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  margin: 20px 0;
+}
+
+.delete-all {
+  text-align: right;
+  margin: 20px;
+}
+.delete-all input {
+  height: 25px;
+  width: 25px;
+  transform: translateY(5px);
+  margin: 0 15px;
+}
+.delete-all span {
+  text-transform: uppercase;
+  color: rgb(3, 165, 206);
+  letter-spacing: 1.3px;
+}
+.delete-all button {
+  border: 1px solid crimson;
+  padding: 10px 25px;
+  color: crimson;
+  text-transform: uppercase;
+}
+
+.filter_menu {
+  width: 100%;
+  min-height: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+.filter_menu select,
+input {
+  border: 1px solid #ccc;
+  outline: none;
+  height: 40px;
+  padding: 0 5px;
+}
+.filter_menu input {
+  flex: 1;
+  margin: 0 10px;
+}
+
+/* -------------------- Load More --------------- */
+.load_more {
+  text-align: center;
+}
+.load_more button {
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  border: 1px solid #555;
+  text-transform: capitalize;
+}
+
+/* about */
+
+.detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 50px;
+  font-size: 150%;
+}
+.detail img {
+  max-width: 400px;
+  width: 100%;
+  margin: 20px;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+.box-detail {
+  max-width: 500px;
+  width: 100%;
+  margin: 5px 20px;
+}
+.box-detail .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.box-detail h2 {
+  text-transform: uppercase;
+  color: darkblue;
+  letter-spacing: 2px;
+  font-weight: 2rem;
+}
+.box-detail p {
+  line-height: 1.5;
+  margin: 10px 0;
+  opacity: 0.8;
+}
+.box-detail .cart {
+  background: purple;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 25px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/*  cart  */
+
+.cart {
+  position: relative;
+  border: 1px solid #ccc;
+  transform: scaleY(0.98);
+}
+.amount span {
+  color: crimson;
+  padding: 0 20px;
+}
+.amount button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #777;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  color: crimson;
+  font-weight: 900;
+  cursor: pointer;
+}
+.total {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.total h3 {
+  color: crimson;
+}
+
+/* history */
+
+.history-page {
+  overflow-x: auto;
+}
+.history-page h2,
+h4 {
+  text-align: center;
+  margin: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+.history-page table {
+  margin: auto;
+  width: 100%;
+}
+.history-page table,
+th,
+tr,
+td {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  text-transform: capitalize;
+}
+table a {
+  color: rgb(3, 165, 206);
+}
+
+.history-page img {
+  width: 70px;
+  height: 100px;
+  object-fit: cover;
+}
+
+
+
+.go_back {
+  background: white;
+  margin: 20px;
+  font-size: 1.2rem;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  margin-top: 0.1rem;
+}
+
+.controls {
+  width: 19%;
+  padding: 1rem;
+  background: black;
+  color: white;
+}
+
+.controls h1 {
+  margin-bottom: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.controls .input {
+  border: none;
+}
+
+.map {
+  width: 80%;
+  height: 100vh;
+  position: relative;
+}
+
+.map-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+}
+
+.destination-form {
+  margin-top: 1rem;
+  display: inline-grid;
+  height: 10rem;
+  width: 100%;
+}
+
+.destination-form-combobox {
+  border-style: solid;
+  border-color: black;
+  border-width: 0.1rem;
+  border-radius: 0.3rem;
+  margin: auto;
+  width: 90%;
+}
+
+.btn-dest {
+  background-color: rgb(10, 10, 165);
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 1rem;
+  text-align: center;
+  margin: auto;
+}
+
+.btn-dest:hover {
+  background-color: rgb(193, 193, 255);
+  color: black;
+}
+
+#btn-goto {
+  width: 4rem;
+  margin-top: 1rem;
+}
+
+#btn-save-dest {
+  width: 8rem;
+  margin-top: 0.5rem;
+}
+
+.combobox-input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+}
+
+.combobox-list {
+  box-sizing: content-box;
+  background-color: black;
+  border-top: 0.1rem;
+  border-color: black;
+  border-style: solid;
+
+  position: relative;
+  z-index: 3;
+}
+
+.combobox-list :hover {
+  background-color: rgb(188, 188, 188);
+  border-style: solid;
+  border-color: rgb(188, 188, 188);
+  border-radius: 0.2rem;
+}
+
+.combobox-option {
+  box-sizing: content-box;
+  border: 0.1rem 0 0 0;
+  border-style: solid;
+  border-color: black;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+}
+
+.map-footer {
+  width: 100%;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: black;
+}
+
+.map-padding {
+  width: 1%;
+  height: 100vh;
+  background: #1a1414;
+}
+
+.hint-enter-address {
+  margin-top: 0.5rem;
+  margin-left: 0.2rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-style: italic;
+  opacity: 0.7;
+}
+
+.highlight {
+  font: bold;
+  color: #d41f1f;
+}
+
+.receiverData {
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  width: 90%;
+  border-width: 0;
+}
+
+.receiverData h1 {
+  color: rgb(254, 28, 28);
+  font-size: 1rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: 0.2rem;
+}
+
+.receiverData h2 {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 0.2rem;
+}
+
+.receiverData input {
+  border-width: 0.1rem;
+  border-color: black;
+  border-radius: 0.3rem;
+  height: 2rem;
+  width: 90%;
+}
+
+.confirmBoxWrapper {
+  position: absolute;
+  z-index: 4;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* opacity: 40%; */
+  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.confirmBoxWrapper div {
+  position: relative;
+  margin: auto;
+  width: 24rem;
+  height: 10.5rem;
+  margin-top: 2rem;
+  background-color: rgb(255, 244, 244);
+
+  border-width: 0.1rem;
+  border-color: black;
+  border-style: solid;
+  border-radius: 1rem;
+}
+
+.confirmBoxWrapper h3 {
+  font-family: 'Lucida Grande';
+  text-align: center;
+}
+
+.confirmBoxWrapper #first {
+  margin-top: 0.7rem;
+  color: rgb(255, 21, 21);
+}
+
+.confirmBoxWrapper #second {
+  margin-top: 0.2rem;
+}
+
+.confirmBoxWrapper #third {
+  margin-top: 0.7rem;
+}
+
+.confirmBoxWrapper .buttons {
+  width: 100%;
+  height: 2.4rem;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.confirmBoxWrapper .buttons button {
+  background-color: rgb(10, 10, 165);
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  height: 100%;
+  width: 4.4rem;
+  border-radius: 1rem;
+  border-width: 0;
+}
+
+.confirmBoxWrapper .buttons button:hover {
+  background-color: white;
+  background-color: rgb(193, 193, 255);
+  color: black;
+  border-color: rgb(10, 10, 165);
+  border-width: 0.2rem;
+}
+
+.addDeposit {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+	position: relative;
+	width: 100%;
+	height: 2rem;
+	max-height: 2rem;
+}
+
+.addDeposit button {
+	position: relative;
+	margin: auto;
+	height: 100%;
+	background-color: white;
+	width: 8rem;
+	border-radius: 0.4rem;
+}
+#depositLocName {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+	/* position: relative; */
+	height: 2rem;
+	border: none;
+	width: 90%;
+}
+#depositLocName input {
+	width: 80%;
+	height: 100%;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	font-size: 1rem;
+	border-radius: 0.2rem;
+	border-color: black;
+}
+
+#depAlreadyExists {
+	display: none;
+	color: red;
+	margin: auto;
+	margin-top: 0.5rem;
+	text-align: center;
+} 
